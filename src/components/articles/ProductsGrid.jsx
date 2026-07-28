@@ -20,7 +20,7 @@ export default function ProductsGrid({products, totalPages, setPage}) {
 
                                 <img
                                     className="img-fluid w-100"
-                                    src={`/images/products/${product.artikelId}.jpg`}
+                                    src={`${import.meta.env.BASE_URL}/images/products/${product.artikelId}.jpg`}
                                     alt={product.naam}
                                 />
 

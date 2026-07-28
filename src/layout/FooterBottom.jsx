@@ -9,12 +9,12 @@ export default function FooterBottom() {
                 <div className="col text-end">
                     <span>Build with </span>
 
-                    <img src={`/images/icons/React-icon.svg`}
+                    <img src={`${import.meta.env.BASE_URL}/images/icons/React-icon.svg`}
                          alt="Spring" width="16" height="16"/>
 
                     <span> React and </span>
 
-                    <img src={`/images/icons/Spring_Boot.svg`}
+                    <img src={`${import.meta.env.BASE_URL}/images/icons/Spring_Boot.svg`}
                          alt="Spring" width="16" height="16"/>
 
                     <span> Spring Mvc / Data</span>
