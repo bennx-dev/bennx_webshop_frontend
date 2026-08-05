@@ -7,10 +7,10 @@
     --artikel-hover-border-color: #111827;
 
     --artikel-prijs-color: #0d490a;
-    --artikel-prijs-font-size: 1.2rem;
+    --artikel-prijs-font-size: 0.9rem;
     --artikel-prijs-font-weight: bold;
 
-    --artikel-categorie-font-size: 0.85rem;
+    --artikel-categorie-font-size: 0.8rem;
 
     --artikel-stock-font-size: 0.90rem;
     --artikel-stock-font-weight: 0.85rem;
@@ -22,13 +22,10 @@
 }
 
 .artikel {
-    background-color: var(--artikel-background-color);
-    border: var(--artikel-border-radius) var(--artikel-border-style) var(--artikel-border-color);
-    transition: --artikel-border-radius var(--standaard-transition);
+    transition: var(--standaard-transition);
 }
 
 .artikel:hover {
-    border: var(--artikel-border-radius) var(--artikel-border-style) var(--artikel-hover-border-color);
     transform: scale(1.05);
 }
 
