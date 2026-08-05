@@ -1,18 +1,19 @@
 :root {
     --artikel-background-color: #F9FAFB;
-    --artikel-border-color: #E5E7EB;
+    --artikel-border-color:#DEE2E6;
     --artikel-border-radius: 1px;
     --artikel-border-style: solid;
+    --artikel-border-width: 1px;
 
     --artikel-beschrijving-color: #346D9D;
 
     --artikel-prijs-color: black;
-    --artikel-prijs-font-size: 0.9rem;
+    --artikel-prijs-font-size: 1rem;
     --artikel-prijs-font-weight: bold;
 
-    --artikel-categorie-font-size: 0.7rem;
+    --artikel-categorie-font-size: 0.8rem;
 
-    --artikel-stock-font-size: 0.7rem;
+    --artikel-stock-font-size: 0.8rem;
     --artikel-stock-font-weight: bolder;
     --artikel-stock-color: #097B09;
     --artikel-stockLimit-color: orange;
@@ -23,10 +24,6 @@
 
 .artikel {
     transition: var(--standaard-transition);
-}
-
-.artikel:hover {
-    transform: scale(1.05);
 }
 
 .price {
@@ -62,4 +59,10 @@
     font-size: var(--artikel-stock-font-size);
     font-weight: var(--artikel-stock-font-weight);
     color: var(--artikel-stockCTA-color);
+}
+
+@media (max-width: 576px) {
+    .custom-border-bottom-sm {
+        border-bottom: var(--artikel-border-width) solid var(--artikel-border-color);
+    }
 }

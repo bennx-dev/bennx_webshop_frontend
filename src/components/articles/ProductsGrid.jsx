@@ -8,7 +8,6 @@ export default function ProductsGrid({products, totalPages, setPage}) {
 
             <div className="
              row
-             gy-3
              gx-3
              row-cols-1
              row-cols-sm-3
@@ -19,7 +18,12 @@ export default function ProductsGrid({products, totalPages, setPage}) {
             >
 
                 {products.map(product => (
-                    <div key={product.artikelId} className="col">
+                    <div key={product.artikelId} className="
+                     col
+                     custom-border-bottom-sm
+                     pt-2
+                     pb-2"
+                    >
 
                         <Link
                             to={`/product/${product.artikelId}`}

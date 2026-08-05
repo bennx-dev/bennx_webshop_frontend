@@ -14,14 +14,13 @@ export default function HomePage() {
             {/*<MobileCategorySidebar categories={categories} />*/}
 
             <div className="d-flex flex-row gap-3">
+
                 {/*desktop categorieen*/}
                 <div className="d-none d-md-block d-flex " style={{flex: "0 0 230px"}}>
                     <Categories categories={categories}/>
                 </div>
 
-                <div className="flex-grow-1">
                     <ArticlesContainer key={categoryId || "all"}/>
-                </div>
             </div>
         </main>
     );
