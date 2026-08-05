@@ -4,47 +4,79 @@ import {Link} from "react-router-dom";
 export default function ProductsGrid({products, totalPages, setPage}) {
 
     return (
-        <div className="d-grid text-center">
+        <div className="container">
 
-            <div className="row gy-3 gx-3 row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 mb-4">
+            <div className="
+             row
+             gy-3
+             gx-3
+             row-cols-1
+             row-cols-sm-3
+             row-cols-md-3
+             row-cols-lg-4
+             row-cols-xl-6
+             mb-4"
+            >
 
                 {products.map(product => (
                     <div key={product.artikelId} className="col">
 
                         <Link
                             to={`/product/${product.artikelId}`}
-                            className="d-flex flex-column artikel h-100 text-decoration-none text-dark"
+                            className="
+                            d-flex
+                            flex-column
+                            artikel
+                            w-100
+                            h-100
+                            p-2
+                            text-decoration-none
+                            text-dark"
                         >
 
-                            <div className="d-flex flex-column h-100 p-2">
+                            <img
+                                className="
+                                    img-fluid"
 
-                                <img
-                                    className="img-fluid w-100"
-                                    src={`${import.meta.env.BASE_URL}/images/products/${product.artikelId}.jpg`}
-                                    alt={product.naam}
-                                />
+                                src={`${import.meta.env.BASE_URL}/images/products/${product.artikelId}.jpg`}
+                                alt={product.naam}
+                            />
 
-                                <h3 className="beschrijving flex-grow-1 flex-wrap">
-                                    {product.naam}
-                                </h3>
+                            <h3 className="
+                                 beschrijving
+                                 mb-0
+                                 mt-2"
+                            >
+                                {product.naam}
+                            </h3>
 
-                                <div className="mt-auto">
+                            <div className="
+                                 mt-auto"
+                            >
 
-                                    <p className="categorie mb-1">
-                                        {product.categorieNamen?.length
-                                            ? product.categorieNamen.join(", ")
-                                            : "Geen categorie"}
-                                    </p>
+                                <p className="
+                                     categorie
+                                     mb-3
+                                     mt-1"
+                                >
+                                    {product.categorieNamen?.length
+                                        ? product.categorieNamen.join(", ")
+                                        : "Geen categorie"}
+                                </p>
 
-                                    <p className="stock mb-1">
-                                        {product.stockLabel}
-                                    </p>
+                                <p className="
+                                     stock
+                                     mb-1"
+                                >
+                                    {product.stockLabel}
+                                </p>
 
-                                    <p className="price mb-0">
-                                        € {product.prijs} (incl. btw)
-                                    </p>
-
-                                </div>
+                                <p className="
+                                     price
+                                     mb-0"
+                                >
+                                    € {product.prijs} (incl. btw)
+                                </p>
 
                             </div>
 
