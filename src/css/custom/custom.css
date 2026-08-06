@@ -44,6 +44,22 @@ body {
     --input-focus-box-shadow: 0 0 5px var(--footer-border-top-color);
 }
 
+/* === Sticky footer layout: keeps footer at the bottom of the viewport - START === */
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+
+html, body, #root {
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+/* === End sticky footer layout === */
+
 header {
     background: var(--primary-text-color);
     border-bottom: var(--footer-border-top);
