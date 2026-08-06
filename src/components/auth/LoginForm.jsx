@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function LoginForm() {
     return (
         <div className="container-fluid d-flex justify-content-center align-items-center">
@@ -22,7 +24,9 @@ export default function LoginForm() {
                 </div>
 
                 <div className="mb-3 mt-0 text-end">
-                    <a href="#" className="small">Wachtwoord vergeten?</a>
+                    <Link to="#" className="small">
+                        Wachtwoord vergeten?
+                    </Link>
                 </div>
 
                 <button
@@ -34,7 +38,7 @@ export default function LoginForm() {
 
                 <p className="text-center small">
                     Heb je nog geen account bij ons? Maak dan{" "}
-                    <a href="#">hier</a> een account aan.
+                    <Link to="#">hier</Link> een account aan.
                 </p>
             </form>
         </div>
