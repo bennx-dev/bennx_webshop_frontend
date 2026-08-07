@@ -5,21 +5,34 @@ import {IconAccount} from "../components/icons/IconAccount.jsx";
 import {IconArrow} from "../components/icons/IconArrow.jsx";
 import {IconWishlist} from "../components/icons/IconWishlist.jsx";
 import {IconCart} from "../components/icons/IconCart.jsx";
+import {useCategoryState} from "../context/CategoryStateContext.jsx";
 
-export default function Header({onOpenCategories}) {
+export default function Header() {
+
+    /*
+    Header beheert de globale navigatie:
+    - logo / home navigatie
+    - mobiele categorie navigatie openen
+    - account, wishlist en winkelmand acties
+   */
+
+    const { setOffcanvasCategorieenOpen } = useCategoryState();
+
     return (
         <header className="container-fluid px-2 mb-1">
 
-            {/* Bovenste rij */}
+            {/* Hoofdnavigatie */}
             <div className="d-flex align-items-center justify-content-between">
 
-                {/* Menu Links */}
+                {/* Links: mobiele menu + logo */}
                 <div className="d-flex align-items-center">
 
                     <button
                         className="btn d-md-none px-1 pe-3 navButton"
                         type="button"
-                        onClick={onOpenCategories}
+                        // toon de offcanvas met categorieen
+                        // De offcanvas zelf wordt beheerd door CategoryState.
+                        onClick={() => setOffcanvasCategorieenOpen(true)}
                         aria-controls="offcanvasCategorieen"
                     >
                         <IconHamburger/>
@@ -30,14 +43,14 @@ export default function Header({onOpenCategories}) {
                     </Link>
                 </div>
 
-                {/* Desktop marquee */}
+                {/* Desktop informatiebanner */}
                 <div className="flex-grow-1 overflow-hidden d-none d-md-flex justify-content-center mx-3">
                     <div className="marquee">
-                        🚧 Deze webshop is in ontwikkeling naast mijn opleiding, met focus op praktijkervaring
+                        🚧 Deze webshop is educatief en is in ontwikkeling met focus op praktijkervaring
                     </div>
                 </div>
 
-                {/* Menu rechts */}
+                {/* Rechter navigatie */}
                 <nav className="d-flex align-items-center navButton">
 
                     <button
@@ -64,9 +77,12 @@ export default function Header({onOpenCategories}) {
                 </nav>
             </div>
 
-            {/* Tweede lijn mobiel */}
+            {/*
+                Mobile UX:
+                dezelfde boodschap als desktop, maar aangepast aan kleinere schermen.
+            */}
             <div className="d-md-none text-center small fw-semibold mt-1">
-                🚧 In ontwikkeling naast opleiding
+                🚧 Educatief en in ontwikkeling met focus op praktijkervaring
             </div>
 
         </header>
