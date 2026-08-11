@@ -5,7 +5,7 @@
 // - mobile categorie menu openen/sluiten
 // - uitgeklapte categorieën in de boom
 
-import { createContext, useState, useContext} from "react";
+import {createContext, useState, useContext, useEffect} from "react";
 
 const CategoryStateContext = createContext();
 
@@ -18,7 +18,7 @@ export function CategoryStateProvider({ children }) {
     const [offcanvasCategorieenOpen, setOffcanvasCategorieenOpen] = useState(false);
 
     /*
-        Houdt bij welke parent categorieën opengeklapt zijn.
+        Houdt bij welke parent/branch categorieën momenteel open zijn.
 
         Voorbeeld:
         {
@@ -29,15 +29,47 @@ export function CategoryStateProvider({ children }) {
         Elke CategoryNode gebruikt zijn eigen categorieId
         om zijn open/dicht status te bepalen.
     */
-    const [expandedCategories, setExpandedCategories] = useState({});
+    const [branchCategories, setBranchCategories] = useState(
+        () => {
+            const savedBranchCategories = localStorage.getItem("branchCategories");
+            return savedBranchCategories ? JSON.parse(savedBranchCategories) : {};
+        });
+
+    useEffect(() => {
+        localStorage.setItem(
+            "branchCategories",
+            JSON.stringify(branchCategories)
+        );
+    }, [branchCategories]);
+
+
+    // Leaf Categories
+    const [leafCategoryId, setLeafCategoryId] = useState(
+        () => {
+        const savedLeafCategoryId = localStorage.getItem("leafCategoryId");
+        return savedLeafCategoryId ? Number(savedLeafCategoryId) : null;
+    });
+
+    useEffect(() => {
+        if (leafCategoryId === null) {
+            localStorage.removeItem("leafCategoryId");
+        } else {
+            localStorage.setItem(
+                "leafCategoryId",
+                leafCategoryId
+            );
+        }
+    }, [leafCategoryId]);
 
     return (
 
         <CategoryStateContext.Provider value={{
             offcanvasCategorieenOpen,
             setOffcanvasCategorieenOpen,
-            expandedCategories,
-            setExpandedCategories
+            branchCategories,
+            setBranchCategories,
+            leafCategoryId,
+            setLeafCategoryId
         }}>
             {children}
         </CategoryStateContext.Provider>

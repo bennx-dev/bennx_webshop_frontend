@@ -17,20 +17,23 @@ export default function CategoryNode({node, depth = 0}) {
 
     /*
         CategoryNode gebruikt gedeelde categorie UI state:
-        - expandedCategories bepaalt welke nodes opengeklapt zijn
+        - branchCategories bepaalt welke nodes opengeklapt zijn
         - offcanvasCategorieenOpen wordt gesloten na selectie op mobile
     */
     const {
         setOffcanvasCategorieenOpen,
-        expandedCategories,
-        setExpandedCategories
+        branchCategories,
+        setBranchCategories,
+        leafCategoryId,
+        setLeafCategoryId
     } = useCategoryState();
 
     /*
-        Nieuwe categorieën bestaan niet automatisch in expandedCategories.
+        Nieuwe categorieën bestaan niet automatisch in branchCategories.
         Daarom standaard gesloten wanneer er geen state aanwezig is.
     */
-    const open = expandedCategories[node.categorieId] ?? false;
+    const branchOpen = branchCategories[node.categorieId] ?? false;
+    const leafOpen = leafCategoryId === node.categorieId;
 
     return (
 
@@ -44,28 +47,29 @@ export default function CategoryNode({node, depth = 0}) {
                  p-0
                  m-0
                  px-2
-                 category-title depth-${depth}
+                 category-title
+                 depth-${depth}
+                 ${branchOpen ? "parentCategory-active" : "parentCategory-inactive"}
+                 ${leafOpen ? "activeLeaf" : "inactiveLeaf"}
                  `}
 
-                  onClick={() => {
+                  onClick={() => { // toggle branch open/close
 
-                      /*
-                        Parent categorie:
-                        alleen de UI state wijzigen zodat kinderen
-                        zichtbaar of verborgen worden.
-                    */
                       if (node.children.length > 0) {
-                          setExpandedCategories({
-                              ...expandedCategories,
-                              [node.categorieId]: !open
+                          setBranchCategories({
+                              ...branchCategories, // Copy the old fields
+                              [node.categorieId]: !branchOpen //update the value
                           });
-                      } else {
+                      } else { // leaf categorie
+
+                          setLeafCategoryId(node.categorieId);
 
                           /*
                             Categorie pagina:
                             gebruiker gaat naar de categoriepagina.
                             Op mobile sluiten we daarna het menu.
-                        */
+                          */
+
                           navigate(`/categorie/${node.categorieId}`);
 
                           setOffcanvasCategorieenOpen(false);
@@ -83,7 +87,7 @@ export default function CategoryNode({node, depth = 0}) {
                     m-0
                     px-2"
 
-                    style={{display: open ? "block" : "none"}}>
+                    style={{display: branchOpen ? "block" : "none"}}>
                     {
                         node.children.map(child => (
                             <CategoryNode

@@ -1,5 +1,6 @@
 import {useCategoryState} from "../../../context/CategoryStateContext.jsx";
 import CategoryTree from "../CategoryTree.jsx";
+import ResetCategories from "../../categories/ResetCategories.jsx";
 
 export default function MobileCategorySidebar({categories}) {
 
@@ -48,7 +49,7 @@ export default function MobileCategorySidebar({categories}) {
             </div>
 
             <div className="offcanvas-body">
-
+                <ResetCategories/>
                 <CategoryTree categories={categories}/>
 
             </div>

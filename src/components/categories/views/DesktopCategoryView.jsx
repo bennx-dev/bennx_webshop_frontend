@@ -1,4 +1,5 @@
 import CategoryTree from "../CategoryTree.jsx";
+import ResetCategories from "../../categories/ResetCategories.jsx";
 
 export default function DesktopCategories({categories}) {
 
@@ -18,7 +19,7 @@ export default function DesktopCategories({categories}) {
 
                  style={{flex: "0 0 230px"}}
             >
-
+                <ResetCategories/>
                 <CategoryTree categories={categories}/>
 
             </div>

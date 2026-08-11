@@ -3,6 +3,7 @@
     --categorie-border-color: #E5E7EB;
     --categorie-border-radius: 10px;
     --categorie-font-weight-bold: bold;
+    --categorie-font-weight-normal: normal;
     --categorie-title-cursor: pointer;
 
 }
@@ -37,7 +38,10 @@
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.category-title {
+.category-title,
+.parentCategory-inactive,
+.inactiveLeaf
+{
     border: 1px solid transparent;
     border-radius: var(--categorie-border-radius);
     cursor: var(--categorie-title-cursor);
@@ -45,12 +49,63 @@
     /*width: 100%;*/
     /*white-space: normal;*/
     word-break: break-word;
+
+    transition:
+            border-color 150ms ease,
+            color 150ms ease;
 }
 
-.category-title:hover {
+.category-title:hover,
+.parentCategory-active
+{
     background-color: var(--button-primary-background-color-hover);
     border: 1px solid var(--categorie-border-color);
     border-radius: var(--categorie-border-radius);
     color: var(--button-primary-color);
     text-shadow: 0 0 0.5px currentColor;
+
+    transition:
+            border-color 150ms ease,
+            color 150ms ease;
+}
+
+.activeLeaf {
+    border: 1px solid var(--button-primary-background-color-hover);
+    border-radius: var(--categorie-border-radius);
+    text-shadow: 0 0 0.5px currentColor;
+}
+
+.resetCategories
+{
+    all: unset;
+
+    font-weight: var(--categorie-font-weight-normal);
+    border: 1px solid var(--button-primary-background-color-hover);
+    border-radius: var(--categorie-border-radius);
+    text-shadow: 0 0 0.5px currentColor;
+}
+
+@media (hover: hover) {
+    .resetCategories:hover{
+        background-color: var(--button-primary-background-color-hover);
+        border: 1px solid var(--categorie-border-color);
+        border-radius: var(--categorie-border-radius);
+        color: var(--button-primary-color);
+        text-shadow: 0 0 0.5px currentColor;
+
+        transition:
+                border-color 150ms ease,
+                color 150ms ease;
+    }
+}
+
+.resetCategories:active {
+    background-color: var(--button-primary-background-color-hover);
+    border: 1px solid var(--categorie-border-color);
+    color: var(--button-primary-color);
+}
+
+.resetCategories:focus:not(:active) {
+    background-color: transparent;
+    color: inherit;
 }
