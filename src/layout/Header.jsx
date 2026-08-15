@@ -10,10 +10,10 @@ import {useCategoryState} from "../context/CategoryStateContext.jsx";
 export default function Header({showCategoriesOffcanvas}) {
 
     /*
-    Header beheert de globale navigatie:
-    - logo / home navigatie
-    - mobiele categorie navigatie openen
-    - account, wishlist en winkelmand acties
+    Header manages the global navigation:
+    - logo / home navigation
+    - mobile category navigation opening
+    - account, wishlist and shopping cart action
    */
 
     const { setOffcanvasCategorieenOpen } = useCategoryState();
@@ -21,10 +21,10 @@ export default function Header({showCategoriesOffcanvas}) {
     return (
         <header className="container-fluid px-2 mb-1">
 
-            {/* Hoofdnavigatie */}
+            {/* main navigation */}
             <div className="d-flex align-items-center justify-content-between">
 
-                {/* Links: mobiele menu + logo */}
+                {/* left: mobile menu + logo */}
                 <div className="d-flex align-items-center">
 
                     {
@@ -33,8 +33,8 @@ export default function Header({showCategoriesOffcanvas}) {
                         <button
                             className="btn d-md-none px-1 pe-3 navButton"
                             type="button"
-                            // toon de offcanvas met categorieen
-                            // De offcanvas zelf wordt beheerd door CategoryState.
+                            // show offcanvas with the categories
+                            // offcanvas is managed by CategoryState
                             onClick={() => setOffcanvasCategorieenOpen(true)}
                             aria-controls="offcanvasCategorieen"
                         >
@@ -47,22 +47,14 @@ export default function Header({showCategoriesOffcanvas}) {
                     </Link>
                 </div>
 
-                {/* Desktop informatiebanner */}
+                {/* Desktop information banner */}
                 <div className="flex-grow-1 overflow-hidden d-none d-md-flex justify-content-center mx-3">
                     <div className="marquee">
                         🚧 Deze webshop is educatief en is in ontwikkeling met focus op praktijkervaring
                     </div>
                 </div>
 
-                {/*
-                    Mobile informatiebanner
-                */}
-                <div className="d-md-none text-center small fw-semibold mt-1">
-                    🚧 Educatief en in ontwikkeling met focus op praktijkervaring
-                </div>
-
-
-                {/* Rechter navigatie */}
+                {/* Right navigation */}
                 <nav className="d-flex align-items-center navButton">
 
                     <button
@@ -87,6 +79,13 @@ export default function Header({showCategoriesOffcanvas}) {
                         <IconCart/>
                     </button>
                 </nav>
+            </div>
+
+            {/*
+                    Mobile information banner
+                */}
+            <div className="d-md-none text-center small fw-semibold mt-1">
+                🚧 Educatief en in ontwikkeling met focus op praktijkervaring
             </div>
 
         </header>
