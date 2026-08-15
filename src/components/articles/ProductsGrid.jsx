@@ -1,7 +1,7 @@
 import Pagination from "./Pagination.jsx";
 import {Link} from "react-router-dom";
 
-export default function ProductsGrid({products, totalPages, setPage}) {
+export default function ProductsGrid({products, totalPages, page, setPage}) {
 
     return (
         <div className="container">
@@ -93,6 +93,7 @@ export default function ProductsGrid({products, totalPages, setPage}) {
 
             <Pagination
                 totalPages={totalPages}
+                page={page}
                 setPage={setPage}
             />
 

@@ -5,6 +5,7 @@ export default function ArticlesContainer() {
     const {
         products,
         totalPages,
+        page,
         setPage
     } = useArticles();
 
@@ -12,6 +13,7 @@ export default function ArticlesContainer() {
         <ProductsGrid
             products={products}
             totalPages={totalPages}
+            page={page}
             setPage={setPage}
         />
     );

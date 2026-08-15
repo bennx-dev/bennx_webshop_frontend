@@ -37,6 +37,8 @@ body {
     --pagination-button-width: 40px;
     --pagination-button-height: 40px;
 
+    --current-page-background-color: #7f1d1d;
+
     --input-hover-border: 1px solid var(--footer-border-top-color);
     --input-box-shadow: 0 0 5px var(--footer-border-top-color);
 
@@ -154,4 +156,8 @@ button.navButton:hover {
 
 .paginationButtons:hover{
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.currentPage {
+    background-color: var(--current-page-background-color) !important;
 }
