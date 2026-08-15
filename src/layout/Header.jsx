@@ -7,7 +7,7 @@ import {IconWishlist} from "../components/icons/IconWishlist.jsx";
 import {IconCart} from "../components/icons/IconCart.jsx";
 import {useCategoryState} from "../context/CategoryStateContext.jsx";
 
-export default function Header() {
+export default function Header({showCategoriesOffcanvas}) {
 
     /*
     Header beheert de globale navigatie:
@@ -27,16 +27,20 @@ export default function Header() {
                 {/* Links: mobiele menu + logo */}
                 <div className="d-flex align-items-center">
 
-                    <button
-                        className="btn d-md-none px-1 pe-3 navButton"
-                        type="button"
-                        // toon de offcanvas met categorieen
-                        // De offcanvas zelf wordt beheerd door CategoryState.
-                        onClick={() => setOffcanvasCategorieenOpen(true)}
-                        aria-controls="offcanvasCategorieen"
-                    >
-                        <IconHamburger/>
-                    </button>
+                    {
+                        showCategoriesOffcanvas &&
+
+                        <button
+                            className="btn d-md-none px-1 pe-3 navButton"
+                            type="button"
+                            // toon de offcanvas met categorieen
+                            // De offcanvas zelf wordt beheerd door CategoryState.
+                            onClick={() => setOffcanvasCategorieenOpen(true)}
+                            aria-controls="offcanvasCategorieen"
+                        >
+                            <IconHamburger/>
+                        </button>
+                    }
 
                     <Link to="/">
                         <Logo/>
@@ -49,6 +53,14 @@ export default function Header() {
                         🚧 Deze webshop is educatief en is in ontwikkeling met focus op praktijkervaring
                     </div>
                 </div>
+
+                {/*
+                    Mobile informatiebanner
+                */}
+                <div className="d-md-none text-center small fw-semibold mt-1">
+                    🚧 Educatief en in ontwikkeling met focus op praktijkervaring
+                </div>
+
 
                 {/* Rechter navigatie */}
                 <nav className="d-flex align-items-center navButton">
@@ -75,14 +87,6 @@ export default function Header() {
                         <IconCart/>
                     </button>
                 </nav>
-            </div>
-
-            {/*
-                Mobile UX:
-                dezelfde boodschap als desktop, maar aangepast aan kleinere schermen.
-            */}
-            <div className="d-md-none text-center small fw-semibold mt-1">
-                🚧 Educatief en in ontwikkeling met focus op praktijkervaring
             </div>
 
         </header>

@@ -1,10 +1,13 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import Header from "../layout/Header.jsx";
 import Footer from "../layout/Footer.jsx";
 import LoginOffcanvas from "../components/auth/LoginOffcanvas.jsx";
 import { CategoryStateProvider } from "../context/CategoryStateContext.jsx";
 
 export default function Layout() {
+
+    const { pathname } = useLocation();
+    const showCategoriesOffcanvas = !pathname.startsWith('/product');
 
     return (
 
@@ -19,7 +22,7 @@ export default function Layout() {
             */}
             <CategoryStateProvider>
 
-                <Header/>
+                <Header showCategoriesOffcanvas = {showCategoriesOffcanvas}/>
 
                 <Outlet/>
 
