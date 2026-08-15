@@ -9,7 +9,7 @@ export default function ProductsGrid({products, totalPages, setPage}) {
             <div className="
              row
              gx-3
-             row-cols-1
+             row-cols-2
              row-cols-sm-3
              row-cols-md-3
              row-cols-lg-4
